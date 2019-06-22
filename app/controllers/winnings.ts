@@ -1,8 +1,13 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { format, isValid, parse } from "date-fns";
 import fetch from "node-fetch";
 
 import { NotFoundError, UnprocessableEntityError } from "../errors";
+
+// TODO:
+//   - refactor this file into  types and utilities and validation
+//   - write some tests for caching behaviour
+//   - deploy this (ec2, pm2, best way to deploy from circleci to ec2 (codedeploy?))
 
 const DATE_FORMAT = "YYYY-MM-DD";
 
@@ -262,12 +267,24 @@ const validatePicks = (picks: ReqPick[]): void => {
   picks.forEach(validatePick);
 };
 
-const winnings = async (req: Request, res: Response): Promise<void> => {
-  // Validate request format
+export const validate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const { date, picks }: ReqBody = req.body;
 
   validateDate(date);
   validatePicks(picks);
+
+  return next();
+};
+
+export const checkWinnings = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { date, picks }: ReqBody = req.body;
 
   const ticket: Ticket = {
     date,
@@ -284,5 +301,3 @@ const winnings = async (req: Request, res: Response): Promise<void> => {
 
   res.json(ticketWinnings);
 };
-
-export default winnings;
