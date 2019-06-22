@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "ts-node index.ts",
-    "lint": "eslint .",
+    "lint": "eslint --ext .ts .",
     "test": "jest"
   },
   "jest": {
@@ -32,10 +32,30 @@
     "@types/supertest": "^2.0.7",
     "eslint": "^5.15.1",
     "eslint-config-neo": "^0.3.0",
+    "husky": "^2.4.1",
     "jest": "^24.5.0",
+    "lint-staged": "^8.2.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
-    "typescript": "~3.4.5"
+    "typescript": "^3.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.ts": [
+        "eslint --quiet",
+        "git add"
+      ],
+      "*.{ts,json,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   }
 }
