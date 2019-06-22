@@ -1,12 +1,8 @@
-import { Request, Response } from 'express';
+import { NotFoundError } from "../errors";
 
 // 404 Handler
-const notFound = (_: Request, response: Response): void => {
-  console.error('Route Not Found');
-
-  response.status(404);
-
-  throw new Error('Route Not Found');
+const notfound = (): void => {
+  throw new NotFoundError("Route Not Found");
 };
 
-export default notFound;
+export default notfound;
