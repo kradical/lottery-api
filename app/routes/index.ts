@@ -1,10 +1,11 @@
-import express from "express";
+import { AsyncRouter } from "express-async-router";
 
 import root from "../controllers/root";
 import notfound from "../controllers/notfound";
 import winnings from "../controllers/winnings";
 
-const router = express.Router();
+// Lets us use async fns as route handlers
+const router = AsyncRouter();
 
 // Routes
 router.get("/", root);
