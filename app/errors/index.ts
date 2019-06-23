@@ -18,3 +18,5 @@ export class NotFoundError extends ApiError {
     super(message, 404);
   }
 }
+
+export class ValidationError extends Error {}
