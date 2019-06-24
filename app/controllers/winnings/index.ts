@@ -67,6 +67,11 @@ export const validate = (
   return next();
 };
 
+interface ReqBody {
+  date: string;
+  picks: ReqPick[];
+}
+
 export const checkWinnings = async (
   req: Request,
   res: Response
