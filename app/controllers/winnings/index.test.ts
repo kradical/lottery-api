@@ -1,6 +1,32 @@
 import request from "supertest";
 
+import { mockFetchJson } from "../../setup-tests";
+
 import app from "../../app";
+
+afterAll((): void => {
+  mockFetchJson.mockReturnValue(undefined);
+});
+
+/* eslint-disable @typescript-eslint/camelcase */
+beforeEach((): void => {
+  mockFetchJson.mockReset();
+  mockFetchJson.mockReturnValue([
+    {
+      draw_date: "2010-02-03",
+      winning_numbers: "17 22 36 37 52 24"
+    },
+    {
+      draw_date: "2010-02-06",
+      winning_numbers: "14 22 52 54 59 04"
+    },
+    {
+      draw_date: "2010-02-10",
+      winning_numbers: "05 08 29 37 38 34"
+    }
+  ]);
+});
+/* eslint-enable @typescript-eslint/camelcase */
 
 const jackpotTicket = {
   date: "2010-02-03",

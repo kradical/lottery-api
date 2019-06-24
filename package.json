@@ -20,7 +20,10 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "verbose": true
+    "verbose": true,
+    "setupFiles": [
+      "./app/setup-tests.ts"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.19.0",
