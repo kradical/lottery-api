@@ -1,0 +1,105 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2019-06-25T02:44:19.828Z",
+  "__export_source": "insomnia.desktop.app:v6.5.4",
+  "resources": [
+    {
+      "_id": "req_a7aa5d8471104809ae5f76d716247c4b",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"date\": \"2017-11-09\",\n\t\"picks\": [\n\t\t{ \n\t\t\t\"numbers\": [2, 14, 19, 21, 61],\n\t\t\t\"powerball\": 25\n\t\t}\n\t]\n}"
+      },
+      "created": 1561345244751,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_a953e94264814f3aab2d2538ae6145ed",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1561345244751,
+      "method": "POST",
+      "modified": 1561429985096,
+      "name": "/ticket",
+      "parameters": [],
+      "parentId": "wrk_65f5410bd5df4f2cbd04d691de03789b",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{baseUrl}}/ticket",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_65f5410bd5df4f2cbd04d691de03789b",
+      "created": 1561222167891,
+      "description": "",
+      "modified": 1561222167891,
+      "name": "neo-interview",
+      "parentId": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_d7e463122f3a40789805c247eae80ca7",
+      "authentication": {},
+      "body": {},
+      "created": 1561222173618,
+      "description": "",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1561222173619,
+      "method": "GET",
+      "modified": 1561345260947,
+      "name": "/",
+      "parameters": [],
+      "parentId": "wrk_65f5410bd5df4f2cbd04d691de03789b",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{baseUrl}}",
+      "_type": "request"
+    },
+    {
+      "_id": "env_f96bdb5c91d63c8ab20d0af977cd8f88df2c0d20",
+      "color": null,
+      "created": 1561222168209,
+      "data": {},
+      "dataPropertyOrder": null,
+      "isPrivate": false,
+      "metaSortKey": 1561222168209,
+      "modified": 1561222168209,
+      "name": "Base Environment",
+      "parentId": "wrk_65f5410bd5df4f2cbd04d691de03789b",
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_f96bdb5c91d63c8ab20d0af977cd8f88df2c0d20",
+      "cookies": [],
+      "created": 1561222168212,
+      "modified": 1561222168212,
+      "name": "Default Jar",
+      "parentId": "wrk_65f5410bd5df4f2cbd04d691de03789b",
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "env_5bd8d5a14a454d17833a3a7ecb04437c",
+      "color": "#00ff33",
+      "created": 1561222191277,
+      "data": { "baseUrl": "http://localhost:3000" },
+      "dataPropertyOrder": null,
+      "isPrivate": false,
+      "metaSortKey": 1561222191277,
+      "modified": 1561222216584,
+      "name": "development",
+      "parentId": "env_f96bdb5c91d63c8ab20d0af977cd8f88df2c0d20",
+      "_type": "environment"
+    }
+  ]
+}
