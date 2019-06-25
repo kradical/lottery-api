@@ -2,21 +2,23 @@ import { NextFunction, Request, Response } from "express";
 
 import { NotFoundError, UnprocessableEntityError } from "../../errors";
 import { NyLotteryService } from "../../services/ny-lottery";
+import { Draw } from "../../types/draw";
+import { UserPick, ResPick } from "../../types/pick";
+import { Ticket, ReqTicket, ResTicket } from "../../types/ticket";
 import { intersection } from "../../utils/set";
 
 import { validateBody } from "./validation";
 import { calculateWinnings } from "./calculate-winnings";
 
-const getResPick = (pick: UserPick, draw: Draw): ResPick => {
+const getPickWithWinnings = (pick: UserPick, draw: Draw): ResPick => {
   const matching = intersection(pick.numbers, draw.numbers);
   const matchCount = matching.size;
 
   const doesPowerballMatch = pick.powerball === draw.powerball;
 
-  const isWinner = matchCount > 0 || doesPowerballMatch;
   const isJackpot = matchCount === 5 && doesPowerballMatch;
-
   const winnings = calculateWinnings(matchCount, doesPowerballMatch);
+  const isWinner = winnings > 0 || isJackpot;
 
   return {
     numbers: [...pick.numbers],
@@ -27,10 +29,10 @@ const getResPick = (pick: UserPick, draw: Draw): ResPick => {
   };
 };
 
-const getResTicket = (picks: UserPick[], draw: Draw): ResTicket => {
+const getTicketWithWinnings = (picks: UserPick[], draw: Draw): ResTicket => {
   const newPicks: ResPick[] = picks.map(
     (p): ResPick => {
-      return getResPick(p, draw);
+      return getPickWithWinnings(p, draw);
     }
   );
 
@@ -67,16 +69,11 @@ export const validate = (
   return next();
 };
 
-interface ReqBody {
-  date: string;
-  picks: ReqPick[];
-}
-
 export const checkWinnings = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { date, picks }: ReqBody = req.body;
+  const { date, picks }: ReqTicket = req.body;
 
   const ticket: Ticket = {
     date,
@@ -94,7 +91,7 @@ export const checkWinnings = async (
     throw new NotFoundError(`No draw found for date "${date}"`);
   }
 
-  const ResTicket = getResTicket(ticket.picks, draw);
+  const ResTicket = getTicketWithWinnings(ticket.picks, draw);
 
   res.json(ResTicket);
 };

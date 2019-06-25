@@ -1,6 +1,8 @@
 import { isValid, parse } from "date-fns";
 
 import { ValidationError } from "../../errors";
+import { ReqPick } from "../../types/pick";
+import { ReqTicket } from "../../types/ticket";
 
 const validateDate = (date: string): void => {
   if (!date) {
@@ -76,8 +78,8 @@ const validatePicks = (picks: ReqPick[]): void => {
   picks.forEach(validatePick);
 };
 
-export const validateBody = (body: ReqBody): void => {
-  const { date, picks }: ReqBody = body;
+export const validateBody = (body: ReqTicket): void => {
+  const { date, picks }: ReqTicket = body;
 
   validateDate(date);
   validatePicks(picks);

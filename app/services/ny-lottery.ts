@@ -1,6 +1,8 @@
 import { format, parse } from "date-fns";
 import fetch from "node-fetch";
 
+import { Draw, NyGovDraw } from "../types/draw";
+
 const URL = "https://data.ny.gov/resource/d6yy-54nr.json";
 const DATE_FORMAT = "YYYY-MM-DD";
 

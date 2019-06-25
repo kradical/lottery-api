@@ -74,7 +74,7 @@ const mixedTicket = {
 
 test("with a date without a draw", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...winningTicket,
       date: "2000-01-01"
@@ -86,7 +86,7 @@ test("with a date without a draw", async (): Promise<void> => {
 
 test("with a winning ticket", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send(winningTicket);
 
   expect(response.status).toBe(200);
@@ -96,7 +96,7 @@ test("with a winning ticket", async (): Promise<void> => {
 
 test("with a jackpot ticket", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send(jackpotTicket);
 
   expect(response.status).toBe(200);
@@ -108,7 +108,7 @@ test("with a jackpot ticket", async (): Promise<void> => {
 
 test("with a losing ticket", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send(losingTicket);
 
   expect(response.status).toBe(200);
@@ -119,7 +119,7 @@ test("with a losing ticket", async (): Promise<void> => {
 
 test("with a mixed ticket", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send(mixedTicket);
 
   expect(response.status).toBe(200);

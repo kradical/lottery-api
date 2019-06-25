@@ -19,7 +19,7 @@ const validTicket = {
 
 test("without a date", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       date: undefined
@@ -31,7 +31,7 @@ test("without a date", async (): Promise<void> => {
 
 test("without picks", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: undefined
@@ -45,7 +45,7 @@ test("without picks", async (): Promise<void> => {
 
 test("with non array picks", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: "I am not an array"
@@ -69,7 +69,7 @@ test("with empty picks", (): void => {
 
 test("with a pick with missing numbers", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: [
@@ -88,7 +88,7 @@ test("with a pick with missing numbers", async (): Promise<void> => {
 
 test("with a pick without a powerball", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: [
@@ -105,7 +105,7 @@ test("with a pick without a powerball", async (): Promise<void> => {
 
 test("with a pick with non array numbers", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: [
@@ -125,7 +125,7 @@ test("with a pick with non array numbers", async (): Promise<void> => {
 
 test("with a pick with non-number powerball", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: [
@@ -145,7 +145,7 @@ test("with a pick with non-number powerball", async (): Promise<void> => {
 
 test("with a pick with non-number numbers", async (): Promise<void> => {
   const response = await request(app)
-    .post("/winnings")
+    .post("/ticket")
     .send({
       ...validTicket,
       picks: [

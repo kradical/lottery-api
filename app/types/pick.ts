@@ -1,18 +1,14 @@
-// Incoming request data types
-
-interface ReqPick {
+export interface ReqPick {
   numbers: number[];
   powerball: number;
 }
 
-interface UserPick {
+export interface UserPick {
   numbers: Set<number>;
   powerball: number;
 }
 
-// Outgoing response data types
-
-interface ResPick {
+export interface ResPick {
   numbers: number[];
   powerball: number;
   isWinner: boolean;
