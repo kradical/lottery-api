@@ -1,8 +1,8 @@
 {
-  "name": "interview",
+  "name": "lottery-api",
   "description": "A minimal template project for TypeScript interviews",
   "version": "1.0.0",
-  "author": "Neo Financial Engineering <engineering@neofinancial.com>",
+  "author": "kradical",
   "license": "UNLICENSED",
   "private": true,
   "repository": {
